@@ -1,0 +1,9 @@
+{
+  "name": "mch-aria",
+  "version": "1.0.0",
+  "description": "Sitio web de MCH Aria - Tecnología y Soluciones Digitales",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
