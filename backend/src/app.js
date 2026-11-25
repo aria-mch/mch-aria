@@ -1,7 +1,7 @@
 const express = require('express');
 
 const serviceRoutes = require('./routes/service.routes');
-
+const requestRoutes = require('./routes/request.routes');
 const app = express();
 
 // Middlewares
@@ -19,4 +19,6 @@ app.get('/api/health', (req, res) => {
 // Rutas de servicios
 app.use('/api/servicios', serviceRoutes);
 
+// Rutas de solicitudes
+app.use('/api/solicitudes', requestRoutes);
 module.exports = app;
