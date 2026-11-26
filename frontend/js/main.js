@@ -25,7 +25,24 @@ async function cargarServicios() {
             const tarjeta = document.createElement('article');
             tarjeta.classList.add('servicio-card');
 
+            // Asignar un icono según el servicio
+            let icono = 'bi-stars';
+
+            if (servicio.nombre.toLowerCase().includes('formateo')) {
+                icono = 'bi-laptop';
+            } else if (servicio.nombre.toLowerCase().includes('instalación')) {
+                icono = 'bi-gear';
+            } else if (servicio.nombre.toLowerCase().includes('asesorías')) {
+                icono = 'bi-file-earmark-spreadsheet';
+            } else if (servicio.nombre.toLowerCase().includes('sitios web')) {
+                icono = 'bi-window';
+            }
+
             tarjeta.innerHTML = `
+                <div class="servicio-icono">
+                    <i class="bi ${icono}"></i>
+                </div>
+
                 <h3>${servicio.nombre}</h3>
                 <p>${servicio.descripcion}</p>
             `;
