@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="MCH Aria - Tecnología y Soluciones Digitales">
+
+    <title>MCH Aria | Tecnología y Soluciones Digitales</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">MCH Aria</a>
+
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="inicio">
+            <h1>Tecnología que impulsa tus ideas</h1>
+            <p>
+                Soluciones digitales para personas, negocios y proyectos.
+            </p>
+
+            <a href="#servicios">Conoce nuestros servicios</a>
+        </section>
+
+        <section id="servicios">
+            <h2>Nuestros servicios</h2>
+
+            <p>Conoce las soluciones digitales que tenemos para ti.</p>
+
+            <div id="lista-servicios">
+                <!-- Los servicios se cargarán desde nuestra API -->
+            </div>
+        </section>
+
+        <section id="nosotros">
+            <h2>Sobre MCH Aria</h2>
+            <p>
+                Somos un proyecto enfocado en ofrecer soluciones
+                tecnológicas y digitales.
+            </p>
+        </section>
+
+        <section id="contacto">
+            <h2>Solicita información</h2>
+
+            <form id="formulario-solicitud">
+
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="correo">Correo electrónico</label>
+                <input type="email" id="correo" name="correo" required>
+
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono">
+
+                <label for="id_servicio">Servicio de interés</label>
+                <select id="id_servicio" name="id_servicio" required>
+                    <option value="">Selecciona un servicio</option>
+                </select>
+
+                <label for="mensaje">Cuéntanos qué necesitas</label>
+                <textarea id="mensaje" name="mensaje"></textarea>
+
+                <button type="submit">Enviar solicitud</button>
+
+            </form>
+
+            <p id="mensaje-formulario"></p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 MCH Aria - Tecnología y Soluciones Digitales</p>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>

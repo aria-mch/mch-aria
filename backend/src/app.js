@@ -1,14 +1,19 @@
 const express = require('express');
+const cors = require('cors');
 
 const serviceRoutes = require('./routes/service.routes');
 const requestRoutes = require('./routes/request.routes');
+
 const app = express();
 
-// Middlewares
+// Permitir comunicación con el frontend
+app.use(cors());
+
+// Procesar datos JSON y formularios
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Ruta de prueba
+// Verificar funcionamiento del servidor
 app.get('/api/health', (req, res) => {
     res.json({
         status: 'OK',
@@ -16,9 +21,8 @@ app.get('/api/health', (req, res) => {
     });
 });
 
-// Rutas de servicios
+// Rutas de la API
 app.use('/api/servicios', serviceRoutes);
-
-// Rutas de solicitudes
 app.use('/api/solicitudes', requestRoutes);
+
 module.exports = app;
