@@ -1,24 +1,14 @@
+
 const pool = require('../config/database');
 
-// Registrar cliente y solicitud
+// Registrar una nueva solicitud y su cliente
 async function create(data) {
     const connection = await pool.getConnection();
 
     try {
         await connection.beginTransaction();
-        // Verificar que el servicio exista y esté activo
-        const [servicios] = await connection.query(
-            'SELECT id_servicio FROM servicios WHERE id_servicio = ? AND activo = TRUE',
-            [data.id_servicio]
-        );
 
-        if (servicios.length === 0) {
-            const error = new Error('El servicio no existe o está inactivo');
-            error.statusCode = 400;
-            throw error;
-        }
-
-        // Buscar cliente por correo
+        // Buscar si el cliente ya existe por su correo
         const [clientes] = await connection.query(
             'SELECT id_cliente FROM clientes WHERE correo = ?',
             [data.correo]
@@ -27,23 +17,34 @@ async function create(data) {
         let idCliente;
 
         if (clientes.length > 0) {
+            // Reutilizar el cliente existente
             idCliente = clientes[0].id_cliente;
+
+            // Actualizar sus datos
+            await connection.query(
+                `UPDATE clientes
+                 SET nombre = ?, telefono = ?
+                 WHERE id_cliente = ?`,
+                [data.nombre, data.telefono, idCliente]
+            );
+
         } else {
-            // Registrar nuevo cliente
+            // Registrar un cliente nuevo
             const [nuevoCliente] = await connection.query(
                 `INSERT INTO clientes (nombre, correo, telefono)
                  VALUES (?, ?, ?)`,
-                [data.nombre, data.correo, data.telefono || null]
+                [data.nombre, data.correo, data.telefono]
             );
 
             idCliente = nuevoCliente.insertId;
         }
 
-        // Registrar solicitud
+        // Registrar la solicitud
         const [nuevaSolicitud] = await connection.query(
-            `INSERT INTO solicitudes (id_cliente, id_servicio, mensaje)
+            `INSERT INTO solicitudes
+             (id_cliente, id_servicio, mensaje)
              VALUES (?, ?, ?)`,
-            [idCliente, data.id_servicio, data.mensaje || null]
+            [idCliente, data.id_servicio, data.mensaje]
         );
 
         await connection.commit();

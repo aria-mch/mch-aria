@@ -1,3 +1,4 @@
+
 const requestService = require('../services/request.service');
 
 // Registrar una nueva solicitud
@@ -14,7 +15,9 @@ async function createRequest(req, res) {
         console.error('Error al registrar solicitud:', error.message);
 
         res.status(error.statusCode || 500).json({
-            message: 'Error al registrar la solicitud'
+            message: error.statusCode === 400
+                ? error.message
+                : 'Error al registrar la solicitud'
         });
     }
 }
