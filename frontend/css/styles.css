@@ -293,22 +293,144 @@ header nav ul li a:hover {
    NOSOTROS
 ======================================== */
 
+
+/* ========================================
+   NOSOTROS
+======================================== */
+
 #nosotros {
-    background: var(--color-superficie);
-    text-align: center;
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(139, 92, 246, 0.10),
+            transparent 35%
+        ),
+        var(--color-superficie);
+        padding-bottom: 45px;
 }
 
-#nosotros p {
-    max-width: 800px;
+/* Presentación y principios */
+
+.nosotros-intro {
+    max-width: 1200px;
+    margin: 0 auto 45px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.nosotros-descripcion h2,
+.principios-resumen h2 {
+    text-align: left;
+    font-size: 2.2rem;
+    margin-bottom: 22px;
+}
+
+.nosotros-descripcion p,
+.principios-resumen p {
+    color: var(--color-secundario);
+    font-size: 1.02rem;
+    line-height: 1.9;
+    margin-bottom: 18px;
+}
+
+/* Lista de principios */
+
+.principios-resumen ul {
+    list-style: none;
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.principios-resumen li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-texto);
+    font-weight: 600;
+}
+
+.principios-resumen li i {
+    color: var(--color-cian);
+    font-size: 1.25rem;
+}
+
+/* Tarjetas de principios */
+
+.principios {
+    max-width: 1200px;
     margin: 0 auto;
 }
 
+.principios-encabezado {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.principios-encabezado h2 {
+    font-size: 2rem;
+}
+
+.principios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.principio-card {
+    padding: 28px;
+    background: var(--color-fondo);
+    border: 1px solid var(--color-borde);
+    border-radius: 16px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.principio-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-violeta);
+}
+
+.principio-icono {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: 13px;
+    background: rgba(139, 92, 246, 0.15);
+    color: var(--color-cian);
+    font-size: 1.5rem;
+}
+
+.principio-card h3 {
+    color: var(--color-cian);
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+}
+
+.principio-card p {
+    color: var(--color-secundario);
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+
+.nosotros-descripcion p,
+.principios-resumen p,
+.principio-card p {
+    text-align: justify;
+}
 /* ========================================
    CONTACTO
 ======================================== */
 
 #contacto {
     background: var(--color-fondo);
+    padding-top: 45px; /*Espacio entre tarjetas*/
 }
 
 #formulario-solicitud {
@@ -443,6 +565,7 @@ footer p {
         margin-right: auto;
     }
 
+
     .hero-botones {
         justify-content: center;
     }
@@ -459,6 +582,41 @@ footer p {
     #formulario-solicitud {
         padding: 25px 18px;
     }
+
+    /* NOSOTROS - ADAPTACIÓN MÓVIL */
+
+    .nosotros-intro {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-bottom: 55px;
+    }
+
+    .nosotros-descripcion h2,
+    .principios-resumen h2 {
+        font-size: 1.8rem;
+    }
+
+    .principios-resumen ul {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+    }
+
+    .principios-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .principio-card {
+        padding: 24px;
+    }
+    .principios-encabezado h2 {
+        font-size: 1.1rem;
+    }
+    .principios-resumen h2 {
+    font-size: 1.4rem;
+    line-height: 1.4;
+    text-align: center;
+}
 }
 
 @media (max-width: 400px) {
